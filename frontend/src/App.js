@@ -1,39 +1,50 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const App = () => {
   const [users, setUsers] = useState([]);
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
   // Function to fetch users from the backend API
   const fetchUsers = async () => {
-    console.log('Fetching users...'); // Debugging log before the request
+    setLoading(true);
+    setError("");
     try {
-      const response = await fetch('/api/users');
+      const response = await fetch(`${API_URL}/api/users`);
+      if (!response.ok) throw new Error("Failed to fetch users");
       const data = await response.json();
-      console.log('Fetched users data:', data); // Log the fetched data
       setUsers(data);
-    } catch (error) {
-      console.error('Error fetching users:', error); // Log any error
+    } catch (err) {
+      setError(err.message || "Error fetching users.");
+    } finally {
+      setLoading(false);
     }
   };
 
   // Function to add a new user
   const addUser = async () => {
     if (!name.trim()) {
-      alert('Name cannot be empty!');
+      alert("Name cannot be empty!");
       return;
     }
+    setLoading(true);
+    setError("");
     try {
-      const response = await fetch('/api/users', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name }),
+      const response = await fetch(`${API_URL}/api/users`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: name.trim() }),
       });
-      if (!response.ok) throw new Error('Failed to add user');
-      setName('');
-      fetchUsers();  // Re-fetch users after adding a new one
-    } catch (error) {
-      console.error('Error adding user:', error); // Log any error
+      if (!response.ok) throw new Error("Failed to add user");
+      setName("");
+      fetchUsers(); // Re-fetch users after adding a new one
+    } catch (err) {
+      setError(err.message || "Error adding user.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -43,23 +54,58 @@ const App = () => {
   }, []); // Empty dependency array means it runs once on component mount
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
       <h1>User Management</h1>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Enter a user name"
-        style={{ marginRight: '10px' }}
-      />
-      <button onClick={addUser}>Add User</button>
-      <ul>
-        {users.length > 0
-          ? users.map((user) => {
-              console.log('Rendering user:', user); // Log each user being rendered
-              return <li key={user._id}>{user.name}</li>;
-            })
-          : 'No users found'}
+
+      <div style={{ marginBottom: "15px" }}>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Enter a user name"
+          style={{
+            padding: "10px",
+            borderRadius: "5px",
+            border: "1px solid #ccc",
+            marginRight: "10px",
+          }}
+        />
+        <button
+          onClick={addUser}
+          style={{
+            padding: "10px 15px",
+            backgroundColor: "#007BFF",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+        >
+          Add User
+        </button>
+      </div>
+
+      {loading && <p>Loading...</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
+
+      <ul style={{ listStyleType: "none", padding: "0" }}>
+        {users.length > 0 ? (
+          users.map((user) => (
+            <li
+              key={user._id}
+              style={{
+                padding: "10px",
+                border: "1px solid #ccc",
+                borderRadius: "5px",
+                marginBottom: "5px",
+              }}
+            >
+              {user.name}
+            </li>
+          ))
+        ) : (
+          <p>No users found.</p>
+        )}
       </ul>
     </div>
   );
