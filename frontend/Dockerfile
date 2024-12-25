@@ -2,14 +2,6 @@ FROM node:18
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
+ENV REACT_APP_API_URL=http://backend:5000
 COPY . .
 RUN npm run build
-
-
-FROM node:18
-WORKDIR /app
-COPY --from=builder /app/dist ./dist
-COPY package*.json ./
-RUN npm install --only=production
-EXPOSE 3000
-CMD ["node", "dist/index.js"]
