@@ -6,13 +6,14 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost/api";
 
   // Function to fetch users from the backend API
   const fetchUsers = async () => {
     setLoading(true);
     setError("");
     try {
+      console.log(`${process.env.REACT_APP_API_URL}`);
       const response = await fetch(`${API_URL}/api/users`);
       if (!response.ok) throw new Error("Failed to fetch users");
       const data = await response.json();
