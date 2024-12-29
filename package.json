@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon index.js",
     "test": "jest",
-    "build": "babel src --out-dir dist"
+    "build": "babel src --out-dir dist",
+    "publish": "npm publish"
   },
   "keywords": [],
   "author": "",
