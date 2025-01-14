@@ -70,5 +70,25 @@ This project demonstrates an automated deployment pipeline for a Node.js applica
 - **Triggering the Pipeline**:  
   - Access the Jenkins pipeline and provide the required parameters (e.g., version number or environment).  
   - Run the pipeline to build and deploy the application.  
+
+![image](https://github.com/user-attachments/assets/5b7d6387-2600-4685-8362-9e4548bfbabb)
+![image](https://github.com/user-attachments/assets/b2224718-2e82-4349-8bb9-40c359ed6b37)
+![image](https://github.com/user-attachments/assets/61e03598-0a70-44d5-b606-5f4d53107d31)
+![image](https://github.com/user-attachments/assets/c7ae7495-e5c4-46d6-bd7e-016e1eda837a)
+![image](https://github.com/user-attachments/assets/763307d8-f51e-45c8-bccc-1d2a7801b437)
+![image](https://github.com/user-attachments/assets/22b54dcb-0baa-4b0f-bfd3-bb1637cc80d8)
+![image](https://github.com/user-attachments/assets/28455957-91d3-4c58-92e4-8fcba4232dba)
+![image](https://github.com/user-attachments/assets/a476bffe-72c5-4775-952c-26c0258bcd6b)
+![image](https://github.com/user-attachments/assets/e294f16e-06bf-4962-a6fe-87eb655cc80b)
+![image](https://github.com/user-attachments/assets/03dfe431-8392-4c56-a86b-d977edd7def9)
+![image](https://github.com/user-attachments/assets/c243062b-1e65-4a85-8a21-a0c18d15477b)
+![image](https://github.com/user-attachments/assets/b6985a54-b978-4bf6-835f-77f2994b5df0)
+
+
+
+
+
+
+
  
 
