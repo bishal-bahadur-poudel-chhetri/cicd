@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-# cicd
-=======
-# cicd-nodejs
->>>>>>> 36c2ae0 (Your commit message)
-# cicd-frontend
-# cicd-frontend
-=======
-
-
-
 # Node.js Project Deployment  
 
 ## Description  
@@ -83,20 +71,4 @@ This project demonstrates an automated deployment pipeline for a Node.js applica
   - Access the Jenkins pipeline and provide the required parameters (e.g., version number or environment).  
   - Run the pipeline to build and deploy the application.  
  
-![alt text](image-1.png)
-![alt text](image-9.png)
 
-![alt text](image-2.png)
-![alt text](image-3.png)
-![alt text](image-4.png)
-![alt text](image-5.png)
-
-![alt text](image-6.png)
-
-![alt text](image-7.png)
-
-![alt text](image-8.png)
-![alt text](image-10.png)
-![alt text](image-11.png)
-![alt text](image-12.png)
->>>>>>> 23af1a9 (cicd pipeline)
