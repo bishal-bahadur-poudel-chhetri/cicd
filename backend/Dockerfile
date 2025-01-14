@@ -5,7 +5,10 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 ENV PORT=5000
-ENV MONGO_URI=mongodb+srv://docker:py2ud9blyo5uCq1v@cluster0.hma5hyp.mongodb.net/mydatabase
+# ENV MONGO_URI=mongodb+srv://docker:py2ud9blyo5uCq1v@cluster0.hma5hyp.mongodb.net/myDatabase?retryWrites=true&w=majority
+
+
+
 
 
 # Stage 2: Production
